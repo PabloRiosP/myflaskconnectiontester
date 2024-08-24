@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
-def hello():
+def flask_home():
     return render_template("redirect.html", url="https://pabloriosp.github.io/")
 
 @app.route("/sum", methods=["GET", "POST"])
@@ -12,7 +14,7 @@ def sum_access():
         data = request.json
         return sum(data['a'], data['b'])
     else:
-        return render_template("redirect.html", url="https://pabloriosp.github.io/docs/projects.html")
+        return render_template("redirect.html", url="https://pabloriosp.github.io/docs/projects/project-1.html")
         
 def sum(a, b):
     try:
