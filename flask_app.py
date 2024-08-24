@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "<p><strong>Hola</strong></p>"
+    return render_template("redirect.html", url="https://pabloriosp.github.io/")
 
 @app.route("/sum", methods=["GET", "POST"])
 def sum_access():
@@ -12,7 +12,7 @@ def sum_access():
         data = request.json
         return sum(data['a'], data['b'])
     else:
-        return render_template("redirect.html")
+        return render_template("redirect.html", url="https://pabloriosp.github.io/docs/projects.html")
         
 def sum(a, b):
     try:
